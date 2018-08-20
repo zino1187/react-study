@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>이벤트 구현하기</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+class Box extends React.Component{
+	constructor(props){
+		super(props);
+		this.name="zino";
+	}
+
+	render(){
+		this.css={
+			width:"100px",
+			height:"100px",
+			background:"yellow",
+			border:"2px solid red"
+		};
+
+		/*주의 : 화살표 함수는 this 를 접근할 수 있다.*/
+		var myHandler=(e)=>{
+			window.alert(this.name+" 눌렀니?");
+		}
+		
+		/*주의 : 익명 함수는 this 를 접근할 수 없다.*/
+		var myHandler2=function(e){
+			window.alert(this.name+" 눌렀니?");
+		}
+
+		return(
+			/*주의 : 클래스의 메서드로 이벤트 핸들러를 정의할때는 this 를 사용해야 한다
+				myHandler : render() 안에 정의된 핸들러
+				overHandler: 클래스 메서드로 정의된 핸들러
+			*/
+			<div style={this.css} onClick={myHandler} onMouseOver={this.overHandler}></div>
+		);
+	}
+	
+	/*클래스의 메서드로 정의할 수 있다*/
+	overHandler(){
+		alert("마우스 올렸니?");
+	}
+}
+
+$(function(){
+	var tag=(
+		<Box/>
+	);
+	ReactDOM.render(tag, document.body);
+});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
