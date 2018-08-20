@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>리엑트로 이미지 변경하기</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+/*주의할 점 : 이미지의 경우 닫는 태그를 반드시 명시한다*/
+var stage;
+var path=[
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzvgdIRD8aIuMBfdjlkbvZR5nhA6T6oq1RCYt2MkFxuyWFKQf5Ow",
+	"https://ae01.alicdn.com/kf/HTB1HbDae8TH8KJjy0Fiq6ARsXXao/-.jpg_640x640.jpg",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9x3hPC83XxlmBv75t6mN58mNxXnJ6K5bb4p_efizmShpjvtXA",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6lQzoT2BDM7zh3er56XUSaS4RxsGNzqLAxMATTs6nZdAhQvKo",
+	"https://png.pngtree.com/thumb_back/fw800/back_pic/02/66/46/58578aebe4e37a3.jpg",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS88kYM19rYFORek1gq8bGAbGWCGbqddJBCvj-pUR9rXalCSlL"
+];
+var n=0;
+
+$(function(){
+	stage=document.getElementById("stage");
+	showImg();
+});
+
+function showImg(){
+	ReactDOM.render(<img src={path[n]}/> , stage);
+	n++;
+	setTimeout("showImg()",2000);
+}
+</script>
+</head>
+<body>
+
+<div id="stage"></div>
+</body>
+</html>

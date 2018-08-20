@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>리엑트로 변수넣기</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+$(function(){
+	showMsg();	
+});
+
+function showMsg(){
+	var tag=(
+		<h1 id="logo">
+			<p>로고</p>
+		</h1>
+	);
+	/*
+	1.바벨은 우리가 작성한 태그에 대해 다음과 같은 기본 형태로 처리된다.
+		var tag = React.createElement("태그명", "{속성들}", "inner텍스트값");
+		ex)   var tag = React.createElement("h1",{id:"logo"} , "로고");
+
+	2.태그가 중첩될 경우 inner 텍스트값에 자식요소가 위치한다
+		var tag = React.createElement("h1", {
+			id:"logo"
+		}, React.createElement("p",null,"로고"));
+	*/
+	ReactDOM.render(tag , document.getElementById("stage"));
+}
+</script>
+</head>
+<body>
+<div id="stage"></div>
+</body>
+</html>

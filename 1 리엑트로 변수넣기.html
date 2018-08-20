@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>리엑트로 변수넣기</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+var n=0;
+$(function(){
+	showTime();	
+});
+
+function showTime(){
+	/*변수와 스트일을 적용할때는 중괄호를 이용한다*/
+	n++;
+	ReactDOM.render(<h1>{n}</h1> , document.getElementById("stage"));
+	setTimeout("showTime()",100);
+}
+</script>
+</head>
+<body>
+<div id="stage"></div>
+</body>
+</html>

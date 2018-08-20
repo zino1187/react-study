@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+.wrapper{
+	width:100%;
+	overflow:hidden;
+	text-align:center;
+	padding:100px 100px;
+	box-sizing:border-box;
+}
+.side1{
+	width:49%;
+	height:500px;
+	border:2px solid red;
+	float:left;
+}
+.side2{
+	width:49%;
+	height:500px;
+	border:2px solid blue;
+	float:left;
+}
+#stage1,#stage2{
+	width:100%;
+	height:100%;
+	background:yellow;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="./lib/Star.js"></script>
+<script type="text/babel">
+var obj1;
+var deg=0;
+
+$(function(){
+	$("#bt1").click(function(){
+		moveDOM();
+	});
+
+	$("#bt2").click(function(){
+		moveReactDOM();
+	});
+
+	gameLoop();
+});
+
+
+function moveDOM(){
+	obj1=new Star($("#stage1"));
+}
+
+function moveReactDOM(){
+	deg+=2;
+
+	var objStyle={
+		width:"200px",
+		height:"200px",
+		background:"red",
+		transformOrigin:"center",
+		transform:"rotate("+deg+"deg)"
+	};
+
+	var obj2=<div style={objStyle}></div>;
+
+	ReactDOM.render(obj2 , document.getElementById("stage2"));
+	setTimeout("moveReactDOM()",1);
+}
+
+function gameLoop(){
+	if(obj1!=undefined){
+		obj1.tick();
+		obj1.render();
+	}
+
+	setTimeout("gameLoop()",1);
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="side1">
+			<button id="bt1">그냥 DOM을 에니메이션</button>
+			<div id="stage1"></div>
+		</div>
+		<div class="side2">
+			<button id="bt2"> 리엑트를 가상DOM 에니메이션</button>
+			<div id="stage2"></div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+

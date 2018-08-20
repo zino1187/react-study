@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>return 이용하기</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+var stage;
+
+$(function(){
+	stage=document.getElementById("stage");
+	showTag();
+});
+
+function getDom(){
+	/*주의할 점 : 
+	1.리턴문 이용시 태그를 여러줄에 걸쳐 사용할 경우 소괄호를 이용한다
+	2.같은 등급의 자식요소를 여러개 둘 수 없다, 아래의 경우  h1 을 두개이상 두면 에러난다
+	*/
+	return (
+		<h1>
+			<p>첫번째 문단</p>
+			<p>두번째 문단</p>
+		</h1>
+	);
+}
+
+function showTag(){
+	ReactDOM.render(getDom() , stage);
+}
+</script>
+</head>
+<body>
+
+<div id="stage"></div>
+</body>
+</html>
