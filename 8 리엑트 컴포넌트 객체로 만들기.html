@@ -23,8 +23,10 @@ $(function(){
 3.프로퍼트는  this.props 로 접근하여 사용한다 이때 props  은 이미 정해진 변수명이다
 */
 class Box extends React.Component{
-	render(){
-		var css={
+	constructor(props){
+		super(props);
+
+		this.css={
 			width:this.props.wid,
 			height:this.props.ht,
 			background:this.props.bg,
@@ -33,9 +35,10 @@ class Box extends React.Component{
 			float:"left",
 			border:"1px solid #fff"
 		};
-
+	}
+	render(){
 		return (
-			<div style={css}>{this.props.msg}</div>
+			<div style={this.css}>{this.props.msg}</div>
 		);
 	}			
 }
