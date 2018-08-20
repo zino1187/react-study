@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>리엑트로 컴포넌트 만들기1</title>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+$(function(){
+	showTag();	
+});
+
+function Box(props){
+	var css={
+		width:props.wid,
+		height:props.ht,
+		background:props.bg
+	}
+	return(
+		<div style={css}>{props.msg}</div>
+	);
+}
+
+function showTag(){
+	var tag=(
+		<div>
+			<Box wid="100px" ht="100px" bg="red" msg="안녕"/>
+			<Box wid="100px" ht="100px" bg="dodgerblue" msg="우리"/>
+			<Box wid="100px" ht="100px" bg="yellow" msg="오늘"/>
+			<Box wid="100px" ht="100px" bg="blue" msg="놀자"/>
+		</div>
+	);
+	
+	ReactDOM.render(tag , document.getElementById("stage"));
+}
+</script>
+</head>
+<body>
+<div id="stage"></div>
+</body>
+</html>
